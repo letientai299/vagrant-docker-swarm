@@ -38,8 +38,6 @@ if ! zplug check --verbose; then
   fi
 fi
 
-export ZSH_THEME="avit"
-
 zplug load
 
 alias d="docker"
