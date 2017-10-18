@@ -1,7 +1,7 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-auto = true
+auto = false
 
 # Increase numworkers if you want more than 3 nodes
 numworkers = 2
@@ -75,9 +75,9 @@ Vagrant.configure("2") do |config|
       i.vm.provision "file", source: "zshrc", destination: ".zshrc"
       i.vm.provision "file", source: "tmux.conf", destination: ".tmux.conf"
 
-      for p in ports
-        i.vm.network "forwarded_port", guest: p, host: p
-      end
+      # for p in ports
+        # i.vm.network "forwarded_port", guest: p, host: p
+      # end
 
       if File.file?("./hosts")
         i.vm.provision "file", source: "hosts", destination: "/tmp/hosts"

@@ -1,15 +1,11 @@
 # Install if not installed
-if [ ! -f ~/.zplug/zplug ]; then
-  echo "Zplug not found, installing to home..."
-  git clone https://github.com/b4b4r07/zplug ~/.zplug
-  # There's a problem with v2 that make theme not load correctly
-  cd ~/.zplug/
-  git checkout v1
-  cd ~
-  echo "Done."
+if [ ! -f ~/.zplug/init.zsh ]; then
+  curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh| zsh
 fi
 
-source ~/.zplug/zplug
+source ~/.zplug/init.zsh
+
+zplug 'robbyrussell/oh-my-zsh', use:oh-my-zsh.sh
 
 # Plugins from oh-my-zsh
 for p in {git,colored-man-pages,z,gradle};
@@ -29,17 +25,16 @@ zplug "hlissner/zsh-autopair", nice:10
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        zplug install
-    fi
+  printf "Install? [y/N]: "
+  if read -q; then
+    zplug install
+  fi
 fi
 
-# Then, source plugins and add commands to $PATH
+export ZSH_THEME="avit"
+
 zplug load
 
-export ZSH_THEME="avit"
-export PATH="$PATH:$HOME/.local/bin"
 alias d="docker"
 alias h="http"
-
+export PATH="$PATH:$HOME/.local/bin"

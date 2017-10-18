@@ -24,27 +24,20 @@ sudo usermod -aG docker vagrant
 sudo service docker start
 docker version
 
-task "Git"
-sudo add-apt-repository ppa:git-core/ppa -y
-sudo apt-get update
-sudo apt-get install git -y
-
 task "Neovim"
 sudo add-apt-repository ppa:neovim-ppa/unstable -y
 sudo apt-get update
 sudo apt-get install neovim -y
 
 task "Python and neovim binding"
-sudo apt-get install python python3 python-dev python3-dev python-pip python3-pip -y
+sudo apt-get install python python-dev -y
 pip install --upgrade pip
 pip install --user neovim
-pip3 install --upgrade pip
-pip3 install --user neovim
 
 task "httpie"
 pip install --user --upgrade httpie
 
-tsak "pgcli"
+task "pgcli"
 sudo apt install pgcli -y
 
 task "Tmux"
@@ -59,8 +52,8 @@ sudo apt-get install -y curl wget
 
 task "zsh"
 sudo apt-get install -y zsh
-chsh  -s "$(which zsh)"
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+sudo chsh  -s "$(which zsh)"
+sudo chsh  -s "$(which zsh)" $USER
 
 task "Xterm 256 italic"
 cd $HOME
