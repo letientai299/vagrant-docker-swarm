@@ -8,7 +8,7 @@ numworkers = 2
 
 # VirtualBox settings
 # Increase vmmemory if you want more than 512mb memory in the vm's
-vmmemory = 1536
+vmmemory = 1024
 # Increase numcpu if you want more cpu's per vm
 numcpu = 1
 

@@ -1,7 +1,6 @@
 #!/bin/bash
 
 export DEBIAN_FRONTEND=noninteractive
-
 function task() {
   echo
   echo
